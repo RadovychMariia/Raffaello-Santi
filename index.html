@@ -167,5 +167,119 @@
     <p>&copy; 2025 Вебсайт про Рафаеля Санті</p>
 </footer>
 
+<section class="section" id="quiz-section" style="margin-top: 50px;">
+    <h2>Тест: Наскільки добре ви знаєте Рафаеля Санті?</h2>
+    <form id="quiz-form" class="quiz-form">
+        <div class="question">
+            <p>1. У якому місті народився Рафаель Санті?</p>
+            <label><input type="radio" name="q1" value="0"> Флоренція</label><br>
+            <label><input type="radio" name="q1" value="0"> Рим</label><br>
+            <label><input type="radio" name="q1" value="1"> Урбіно</label>
+        </div>
+
+        <div class="question">
+            <p>2. Хто був першим учителем Рафаеля?</p>
+            <label><input type="radio" name="q2" value="0"> Леонардо да Вінчі</label><br>
+            <label><input type="radio" name="q2" value="1"> Перуджино</label><br>
+            <label><input type="radio" name="q2" value="0"> Мікеланджело</label>
+        </div>
+
+        <div class="question">
+            <p>3. Як називається відома фреска Рафаеля, на якій зображені філософи?</p>
+            <label><input type="radio" name="q3" value="0"> Таємна вечеря</label><br>
+            <label><input type="radio" name="q3" value="0"> Створення Адама</label><br>
+            <label><input type="radio" name="q3" value="1"> Школа Афін</label>
+        </div>
+
+        <div class="question">
+            <p>4. Скільки років було Рафаелю, коли він помер?</p>
+            <label><input type="radio" name="q4" value="1"> 37</label><br>
+            <label><input type="radio" name="q4" value="0"> 45</label><br>
+            <label><input type="radio" name="q4" value="0"> 30</label>
+        </div>
+
+        <div class="question">
+            <p>5. Для якого міста була створена «Систинська Мадонна»?</p>
+            <label><input type="radio" name="q5" value="1"> П’яченца</label><br>
+            <label><input type="radio" name="q5" value="0"> Неаполь</label><br>
+            <label><input type="radio" name="q5" value="0"> Мілан</label>
+        </div>
+
+        <button type="button" onclick="checkQuiz()" class="quiz-button">Перевірити результат</button>
+    </form>
+
+    <div id="quiz-result" class="quiz-result"></div>
+</section>
+
+<style>
+    #quiz-section {
+        background-color: #ffffff;
+        border-radius: 10px;
+        padding: 30px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .quiz-form .question {
+        margin-bottom: 25px;
+        font-size: 18px;
+        color: #2c3e50;
+    }
+
+    .quiz-form label {
+        display: block;
+        margin: 6px 0;
+        cursor: pointer;
+    }
+
+    .quiz-button {
+        background-color: #9b59b6;
+        color: #fff;
+        border: none;
+        padding: 12px 24px;
+        font-size: 16px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-family: 'Arial', sans-serif;
+        transition: background-color 0.3s ease;
+        margin-top: 10px;
+    }
+
+    .quiz-button:hover {
+        background-color: #8e44ad;
+    }
+
+    .quiz-result {
+        margin-top: 30px;
+        font-size: 20px;
+        font-weight: bold;
+        color: #27ae60;
+        text-align: center;
+    }
+</style>
+
+<script>
+    function checkQuiz() {
+        const form = document.getElementById('quiz-form');
+        const formData = new FormData(form);
+        let score = 0;
+
+        for (let [key, value] of formData.entries()) {
+            score += parseInt(value);
+        }
+
+        let resultText = `Правильних відповідей: ${score} з 5. `;
+
+        if (score === 5) {
+            resultText += "Відмінно! Ви справжній знавець творчості Рафаеля.";
+        } else if (score >= 3) {
+            resultText += "Добре! Ви маєте хороші знання.";
+        } else {
+            resultText += "Рекомендуємо перечитати матеріал і спробувати ще раз.";
+        }
+
+        document.getElementById('quiz-result').innerText = resultText;
+    }
+</script>
+
 </body>
 </html>
